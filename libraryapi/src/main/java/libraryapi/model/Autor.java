@@ -2,7 +2,6 @@ package libraryapi.model;
 
 import java.util.Date;
 import java.util.Objects;
-import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,7 +17,7 @@ import javax.persistence.TemporalType;
 public class Autor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private UUID id;
+	private Long id;
 	@Column(length = 100, nullable = false)
 	private String nome;
 	@Column(name = "data_nascimento", nullable = false)
@@ -27,11 +26,13 @@ public class Autor {
 	@Column(nullable = false, length = 50)
 	private String nacionalidade;
 
-	public UUID getId() {
+	
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

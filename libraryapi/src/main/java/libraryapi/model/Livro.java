@@ -2,7 +2,6 @@ package libraryapi.model;
 
 import java.util.Date;
 import java.util.Objects;
-import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +23,7 @@ import libraryapi.enums.GeneroLivro;
 public class Livro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private UUID id;
+	private Long id;
 
 	@Column(length = 20, nullable = false)
 	private String isbn;
@@ -45,11 +44,12 @@ public class Livro {
 	@JoinColumn(name = "id_autor")
 	private Autor autor;
 
-	public UUID getId() {
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
