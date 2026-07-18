@@ -6,6 +6,7 @@ import java.util.Date;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import libraryapi.enums.GeneroLivro;
 import libraryapi.model.Autor;
@@ -67,5 +68,16 @@ public class TestLivroRepository {
 		livroRepository.save(livro);
 		
 		
+	}
+	@Test
+	@Transactional
+	public void testBuscacomLazer() {
+		//usando esse transactional do spring mesmo com a janela aberta e estando em laz ele consegue buscar o autor
+		Livro livro = livroRepository.findById(2L).orElse(null);
+		
+		System.out.println("Livro Titulo:");
+		System.out.println(livro.getTitulo());
+		System.out.println("Autor:");
+		System.out.println(livro.getAutor().getNome());
 	}
 }
