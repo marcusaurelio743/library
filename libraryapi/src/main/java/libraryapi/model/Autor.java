@@ -1,13 +1,17 @@
 package libraryapi.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,8 +29,12 @@ public class Autor {
 	private Date data_nascimento;
 	@Column(nullable = false, length = 50)
 	private String nacionalidade;
-
 	
+	@OneToMany(mappedBy = "autor",cascade = CascadeType.ALL)
+	List<Livro> livros = new ArrayList<>();
+	public List<Livro> getLivros() {
+		return livros;
+	}
 
 	public Long getId() {
 		return id;
